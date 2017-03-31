@@ -2,21 +2,21 @@
 - hosts: localhost
   connection: local
   gather_facts: False
-    
-    tasks:
-    -name: launch
-    ec2:
-    key_name: pr-temp
-    group: ansibletower
-    instance_type: t2.small
-    image: ami-60b6c60a
-    wait: yes
-    wait_timeout: 500
-    count: 1
-    instance_tags:
-       name: prs-environment
-    monitoring: yes
-    vpc_subnet_id: subnet-84bf1edd
-    assign_public_ip: yes
-    
-    register: ec2
+
+  tasks:
+
+    - name: Provision a set of instances
+      ec2:
+         key_name: pr-temp
+         group: ansibletower
+         instance_type: t2.small
+         image: ami-60b6c60a
+         wait: true
+         exact_count: 1
+         count_tag:
+            Name: Demo
+         instance_tags:
+            Name: prs-environment
+         vpc_subnet_id: subnet-84bf1edd
+         assign_public_ip: yes
+      register: ec2
