@@ -1,0 +1,14 @@
+#Provision a single ec2 instance with name tag prs-environment
+- ec2:
+    key_name: pr-temp
+    group: ansibletower
+    instance_type: t2.small
+    image: ami-60b6c60a
+    wait: yes
+    wait_timeout: 500
+    count: 1
+    instance_tags:
+       name: prs-environment
+    monitoring: yes
+    vpc_subnet_id: subnet-84bf1edd
+    assign_public_ip: yes
