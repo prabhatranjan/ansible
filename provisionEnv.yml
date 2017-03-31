@@ -1,5 +1,11 @@
 ---
-- ec2:
+- hosts: localhost
+  connection: local
+  gather_facts: False
+    
+    tasks:
+    -name: launch
+    ec2:
     key_name: pr-temp
     group: ansibletower
     instance_type: t2.small
@@ -12,3 +18,5 @@
     monitoring: yes
     vpc_subnet_id: subnet-84bf1edd
     assign_public_ip: yes
+    
+    register: ec2
