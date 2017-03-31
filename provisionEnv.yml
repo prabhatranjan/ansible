@@ -1,4 +1,4 @@
-#Provision a single ec2 instance with name tag prs-environment
+---
 - ec2:
     key_name: pr-temp
     group: ansibletower
