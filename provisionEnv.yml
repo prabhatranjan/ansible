@@ -11,7 +11,7 @@
          group: ansibletower
          instance_type: t2.small
          region: us-east-1
-         image: ami-60b6c60a
+         image: <TBD>
          wait: true
          exact_count: 1
          count_tag:
